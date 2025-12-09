@@ -126,8 +126,8 @@ def friends(request):
     #check to see which Submit button was pressed(sending a friend request or accepting a friend request)
 
     # this is to process all send requests
-    if request.method == 'POST' and request.POST.get("send_requests"):
-        receivers = request.POST.getlist("send_requests")
+    if request.method == 'POST' and request.POST.get("send_request"):
+        receivers = request.POST.getlist("send_request")
         for receiver in receivers:
             receiver_profile = Profile.objects.get(id=receiver)
             Relationship.objects.create(sender=user_profile,receiver=receiver_profile,status='sent')
@@ -148,10 +148,11 @@ def friends(request):
 
             #add user to the friends list of the sender`s profile
             relationship_obj.sender.friends.add(request.user)
+            return redirect('FeedApp:friends')
 
     context = {'user_friends_profiles':user_friends_profiles,'user_relationships':user_relationships,
                'all_profiles':all_profiles,'request_received_profiles':request_received_profiles}
-
+    print(context)
     return render(request, 'FeedApp/friends.html', context)       
 
 
