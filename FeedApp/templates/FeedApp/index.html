@@ -1,12 +1,78 @@
 {% extends "FeedApp/base.html" %}
+{% load static %}
 
 {% block page_header %}
-    <div class="jumbotron">
-       <h1 class="display-3">Feed</h1>
-            <p class="lead">A Social Network where you can be you.
+
+<style>
+    /* ===== HOME PAGE (3 visual changes) ===== */
+
+    /* 1) New color gradient for header */
+    .hero-jumbotron {
+        background: linear-gradient(135deg, #4c6fff, #1e293b);
+        color: white;
+        border-radius: 1.5rem;
+        padding: 3rem;
+        margin-bottom: 2rem;
+    }
+
+    /* small top-left image */
+    .hero-inline-img {
+        width: 40px;
+        height: 40px;
+        margin-right: 10px;
+        vertical-align: middle;
+        border-radius: 8px;
+    }
+
+    /* large hero image */
+    .hero-main-img {
+        width: 100%;
+        max-width: 420px;
+        border-radius: 1rem;
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    /* 3) embedded background video */
+    .hero-video {
+        width: 100%;
+        border-radius: 1rem;
+        margin-top: 1.5rem;
+        border: 1px solid rgba(255, 255, 255, 0.4);
+    }
+</style>
+
+<div class="jumbotron hero-jumbotron">
+    <div class="row align-items-center">
+
+        <!-- LEFT SIDE -->
+        <div class="col-md-6">
+            <h1 class="display-3">Feed</h1>
+
+            <p class="lead">
+                <img src="{% static 'FeedApp/img/django_sm1.png' %}" alt="icon" class="hero-inline-img">
+                A Social Network where you can be you.
             </p>
 
-            <a class="btn btn-lg btn-outline-primary" href="{% url 'users:register' %}"
-            role="button">Join Now &raquo;</a>
+            <a class="btn btn-lg btn-outline-light" href="{% url 'users:register' %}">
+                Join Now &raquo;
+            </a>
+
+            <!-- VIDEO PREVIEW -->
+            <video class="hero-video" autoplay muted loop playsinline>
+                <source src="{% static 'FeedApp/video/django_vid1.mp4' %}" type="video/mp4">
+            </video>
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="col-md-6 text-center mt-4 mt-md-0">
+            <img src="{% static 'FeedApp/img/django_sm2.png' %}" alt="hero illustration" class="hero-main-img">
+        </div>
+
     </div>
+</div>
+
 {% endblock page_header %}
+
+{% block content %}
+<!-- optional additional content -->
+{% endblock content %}

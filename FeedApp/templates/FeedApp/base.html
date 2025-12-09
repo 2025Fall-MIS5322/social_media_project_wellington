@@ -1,4 +1,5 @@
 {% load bootstrap4 %}
+{% load static %}
 
 <!doctype html>
 
@@ -6,20 +7,18 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1,
-          shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <title>Feed</title>
 
     {% bootstrap_css %}
     {% bootstrap_javascript jquery='full' %}
-
 </head>
 
 <body>
     <nav class="navbar navbar-expand-md navbar-light bg-light mb-4 border">
-
-        <a class="navbar-brand" href="{% url 'FeedApp:index'%}">
-            Home</a>
+        <a class="navbar-brand" href="{% url 'FeedApp:index' %}">
+            Home
+        </a>
 
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse"
             aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -44,14 +43,12 @@
 
             <ul class="navbar-nav ml-auto">
                 {% if user.is_authenticated %}
-
                 <li class="nav-item">
                     <span class="navbar-text">Hello, {{ user.username }}.</span>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:logout' %}">Log out</a>
                 </li>
-
                 {% else %}
                 <li class="nav-item">
                     <a class="nav-link" href="{% url 'users:register' %}">Register</a>
@@ -62,7 +59,6 @@
                 {% endif %}
             </ul>
         </div>
-
     </nav>
 
     <main role="main" class="container">
@@ -76,8 +72,5 @@
     </main>
 
 </body>
-
-
-
 
 </html>
