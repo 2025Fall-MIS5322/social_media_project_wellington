@@ -5,6 +5,7 @@ from datetime import datetime, date
 
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
+#testing remote 
 
 
 # Create your views here.
